@@ -10,6 +10,7 @@ import Daily from "./Daily";
 import Hourly from "./pages/Hourly";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { ApiContextProvider } from "./components/ApiContext";
 
 function AppRoutes() {
   return (
@@ -26,18 +27,16 @@ function AppRoutes() {
 }
 
 function App() {
-  const handleSearch = (searchTerm: string) => {
-    console.log("Searched city:", searchTerm);
-  };
-
   return (
     <Router>
-      <div>
-        <Header onSearch={handleSearch} />
-        <NavBar />
-        <AppRoutes />
-        <Footer />
-      </div>
+      <ApiContextProvider>
+        <div>
+          <Header />
+          <NavBar />
+          <AppRoutes />
+          <Footer />
+        </div>
+      </ApiContextProvider>
     </Router>
   );
 }
