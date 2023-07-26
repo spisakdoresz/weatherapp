@@ -10,7 +10,7 @@ import Daily from "./Daily";
 import Hourly from "./pages/Hourly";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { ApiContextProvider } from "./components/ApiContext";
+import { ApiContextProvider } from "./context-providers/ApiContext";
 
 function AppRoutes() {
   return (

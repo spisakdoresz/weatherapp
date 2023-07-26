@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 
 export type ApiContextType = {
   searchText: string;
-  setSearchText: (newText: string) => void;
+  updateSearchText: (newText: string) => void;
   weatherData: Object[] | null;
 };
 
@@ -13,19 +13,24 @@ const ApiContextProvider = ({ children }) => {
   const [searchText, setSearchText] = useState<string>("");
   const [weatherData, setWeatherData] = useState<Object[] | null>(null);
 
+  const updateSearchText = (newText: string) => {
+    setSearchText(newText);
+  };
+
   useEffect(() => {
     fetch(
-      "https://archive-api.open-meteo.com/v1/archive?latitude=48.1031&longitude=20.7781&start_date=2023-06-30&end_date=2023-07-14&hourly=temperature_2m"
+      "https://api.openweathermap.org/data/2.5/weather?q=Miskolc&appid=7bf7433367c9831b657558e210eb33cc"
     )
       .then((response) => response.json())
-      .then((resultJson) => setWeatherData(resultJson));
+      .then((resultJson) => setWeatherData(resultJson))
+      .catch((err) => console.error(err));
   }, []);
 
   return (
     <ApiContext.Provider
       value={{
         searchText,
-        setSearchText,
+        updateSearchText,
         weatherData,
       }}
     >

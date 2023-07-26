@@ -1,19 +1,20 @@
 // SearchBar.tsx
 import React, { useContext, useState } from "react";
-import { ApiContext, ApiContextType } from "./ApiContext";
+import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
 
 interface SearchBarProps {}
 
 const SearchBar = (props: SearchBarProps) => {
-  const { setSearchText, weatherData } = useContext(
+  const { searchText, updateSearchText, weatherData } = useContext(
     ApiContext
   ) as ApiContextType;
 
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSearch = () => {
-    setSearchText(searchTerm);
+    updateSearchText(searchTerm);
   };
+  console.log("searchText", searchText);
 
   console.log("data", weatherData);
   return (
