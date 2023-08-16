@@ -1,19 +1,31 @@
-// Header.tsx
 import React from "react";
 import homeImage from "/logo.png";
 import { styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
+import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
 
-const StyledBox = styled("div")({
+const HeaderContainer = styled("div")({
   display: "flex",
-  justifyContent: "space-between",
+  justifyContent: "center",
   backgroundColor: "#BB8995",
   alignItems: "center",
 });
 
+const StyledBox = styled("div")({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width: "100%",
+  maxWidth: "1200px",
+  padding: "0 200px",
+});
+
 const Header = () => {
   const navigate = useNavigate();
+  const { weatherData, loading } = React.useContext(
+    ApiContext
+  ) as ApiContextType;
 
   const handleNavigation = (path: string) => {
     navigate(path);
@@ -21,27 +33,42 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <StyledBox>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingLeft: 200,
-            paddingRight: 200,
-          }}
-        >
+      <HeaderContainer>
+        <StyledBox>
           <div>
             <img
               src={homeImage}
               alt="Home"
-              style={{ width: "27%", cursor: "pointer" }}
+              style={{ width: "200px", cursor: "pointer" }}
               onClick={() => handleNavigation("/")}
             />
           </div>
-          <SearchBar />
-        </div>
-      </StyledBox>
+          <div
+            style={{
+              flex: 1,
+              textAlign: "center",
+              fontFamily: "monospace",
+              fontSize: "1.5rem",
+              fontWeight: "bold",
+            }}
+          >
+            {loading ? (
+              "Find your city"
+            ) : weatherData && weatherData.main ? (
+              <>
+                {weatherData.name} |{" "}
+                {Math.round(weatherData.main.temp - 273.15)}
+                °C
+              </>
+            ) : (
+              "No available weather data."
+            )}
+          </div>
+          <div>
+            <SearchBar />
+          </div>
+        </StyledBox>
+      </HeaderContainer>
     </React.Fragment>
   );
 };

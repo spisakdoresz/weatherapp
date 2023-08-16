@@ -44,9 +44,6 @@ export default function NavBar() {
           <StyledIconButton onClick={() => handleNavigation("/hourly")}>
             HOURLY
           </StyledIconButton>
-          <StyledIconButton onClick={() => handleNavigation("/daily")}>
-            DAILY
-          </StyledIconButton>
           <StyledIconButton onClick={() => handleNavigation("/radar")}>
             RADAR
           </StyledIconButton>

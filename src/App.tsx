@@ -10,6 +10,7 @@ import Daily from "./Daily";
 import Hourly from "./pages/Hourly";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { MapApiContextProvider } from "./components/mapApiContext";
 import { ApiContextProvider } from "./context-providers/ApiContext";
 
 function AppRoutes() {
@@ -30,12 +31,14 @@ function App() {
   return (
     <Router>
       <ApiContextProvider>
-        <div>
-          <Header />
-          <NavBar />
-          <AppRoutes />
-          <Footer />
-        </div>
+        <MapApiContextProvider>
+          <div>
+            <Header />
+            <NavBar />
+            <AppRoutes />
+            <Footer />
+          </div>
+        </MapApiContextProvider>
       </ApiContextProvider>
     </Router>
   );
