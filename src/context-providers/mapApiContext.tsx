@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { MapWeatherData } from "../types";
 
 export type MapApiContextType = {

@@ -7,7 +7,7 @@ interface WeatherSummaryProps {
 
 const WeatherSummary = ({ weatherData }: WeatherSummaryProps) => {
   if (weatherData && weatherData.main) {
-    const temperatureCelsius = Math.round(weatherData.main.temp - 273.15);
+    // const temperatureCelsius = Math.round(weatherData.main.temp - 273.15);
     const realFeel = Math.round(weatherData.main.feels_like - 273.15);
     const humidity = weatherData.main.humidity;
     const windSpeed = weatherData.wind.speed;

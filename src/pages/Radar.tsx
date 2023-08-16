@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { MapApiContext } from "../context-providers/mapApiContext";
 
 const Radar = () => {
