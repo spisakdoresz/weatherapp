@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { MapWeatherData } from "../db"; // Itt importáld a térképes időjárás adat típusát
+import { MapWeatherData } from "../types";
 
 export type MapApiContextType = {
   mapWeatherData: MapWeatherData | null;
@@ -8,7 +8,7 @@ export type MapApiContextType = {
 };
 
 const defaultMapWeatherData: MapWeatherData = {
-  layer: "temp_new",
+  layer: "clouds_new",
   x: 0,
   z: 0,
   y: 0,
@@ -30,7 +30,7 @@ const MapApiContextProvider = ({ children }) => {
   const fetchMapWeatherData = (latitude: number, longitude: number) => {
     setLoading(true);
 
-    const layer = "temp_new";
+    const layer = "clouds_new";
     const z = 10;
     const x = 5;
     const y = 10;

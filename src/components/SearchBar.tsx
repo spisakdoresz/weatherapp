@@ -1,14 +1,9 @@
-// SearchBar.tsx
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
 import SearchIcon from "@mui/icons-material/Search";
 
-interface SearchBarProps {}
-
-const SearchBar = (props: SearchBarProps) => {
-  const { searchText, updateSearchText, weatherData } = useContext(
-    ApiContext
-  ) as ApiContextType;
+const SearchBar = () => {
+  const { updateSearchText } = useContext(ApiContext) as ApiContextType;
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isClicked, setIsClicked] = useState<boolean>(false);
@@ -21,7 +16,6 @@ const SearchBar = (props: SearchBarProps) => {
       setIsClicked(false); // Reset the clicked state after a delay
     }, 200); // Adjust the delay as needed
   };
-  console.log("searchText", searchText);
 
   return (
     <div

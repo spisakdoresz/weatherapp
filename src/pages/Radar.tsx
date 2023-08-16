@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { MapApiContext } from "../components/mapApiContext";
+import { MapApiContext } from "../context-providers/mapApiContext";
 
 const Radar = () => {
   const mapApiContext = useContext(MapApiContext);
@@ -24,6 +24,16 @@ const Radar = () => {
           alt="Weather Map"
         />
       )}
+      <iframe
+        src="http://www.zoomforecast.com/zoomradar_weather_map/weather_image_user.php?key=QqKbiO1WI2CAo9g"
+        width="600"
+        height="500"
+        // style="border:0"
+        frameBorder="0"
+        // seamless="seamless"
+        scrolling="no"
+        // allowfullscreen="true"
+      ></iframe>
     </div>
   );
 };

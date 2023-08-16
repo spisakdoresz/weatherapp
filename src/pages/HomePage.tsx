@@ -3,39 +3,24 @@ import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
 import { styled } from "@mui/material";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import { useNavigate } from "react-router-dom";
-import { WeatherData } from "../db";
-import WeatherSummary from "./WeatherSummary";
-
-interface BannerProps {
-  imagePath: string;
-  altText: string;
-  weatherData: WeatherData | null;
-  loading: boolean;
-}
+import WeatherSummary from "../components/WeatherSummary";
+import PageContainer from "../components/PageContainer";
 
 const StyledText = styled("div")({
   fontFamily: "monospace",
 });
 
-const HomeBackGround = ({ imagePath }: BannerProps) => {
-  const { weatherData, loading } = React.useContext(
-    ApiContext
-  ) as ApiContextType;
+const HomePage = () => {
+  const { weatherData } = React.useContext(ApiContext) as ApiContextType;
   const navigate = useNavigate();
 
+  console.log(weatherData);
   return (
-    <div
-      style={{
-        position: "relative",
-        backgroundImage: "linear-gradient(to bottom, #ffffff, #FEC7A2)",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
+    <PageContainer>
       <div
         style={{
           position: "absolute",
-          backgroundImage: `url(${imagePath})`,
+          backgroundImage: `url("https://tionimpo.sirv.com/Images/weatherwizbanner.png")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           top: "3rem",
@@ -82,8 +67,8 @@ const HomeBackGround = ({ imagePath }: BannerProps) => {
           </div>
         </StyledText>
       </div>
-    </div>
+    </PageContainer>
   );
 };
 
-export default HomeBackGround;
+export default HomePage;

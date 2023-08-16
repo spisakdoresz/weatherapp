@@ -1,7 +1,28 @@
 import React from "react";
 import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
-import WeatherIcons from "../WeatherIcons";
+import WeatherIcons from "../utils/WeatherIcons";
 import { styled } from "@mui/material";
+import PageContainer from "../components/PageContainer";
+
+const WeatherDataContainer = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  marginTop: "3rem",
+  textAlign: "center",
+  "& > *:not(:first-of-type)": {
+    borderBottom: "1px solid #ccc",
+    marginBottom: "0.2rem",
+    paddingBottom: "0.2rem",
+    width: "35%",
+  },
+});
+
+const DataItem = styled("div")({
+  fontSize: "1.2rem",
+  fontWeight: "bold",
+  margin: "0.1rem 0",
+});
 
 const Today = () => {
   const { weatherData } = React.useContext(ApiContext) as ApiContextType;
@@ -25,47 +46,20 @@ const Today = () => {
   const snowInLastHour = weatherData.snow?.["1h"];
   const uvIndex = weatherData.uvi;
   const visibility = weatherData.visibility;
-  const sunrise = weatherData.sunrise
-    ? new Date(weatherData.sunrise * 1000).toLocaleTimeString()
+  const sunrise = weatherData.sys.sunrise
+    ? new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()
     : "";
-  const sunset = weatherData.sunset
-    ? new Date(weatherData.sunset * 1000).toLocaleTimeString()
+  const sunset = weatherData.sys.sunset
+    ? new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()
     : "";
   const dewPoint = weatherData.dew_point;
   const StyledText = styled("div")({
     fontFamily: "monospace",
   });
 
-  const WeatherDataContainer = styled("div")({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "3rem",
-    textAlign: "center",
-    "& > *:not(:first-of-type)": {
-      borderBottom: "1px solid #ccc",
-      marginBottom: "0.2rem",
-      paddingBottom: "0.2rem",
-      width: "35%",
-    },
-  });
-
-  const DataItem = styled("div")({
-    fontSize: "1.2rem",
-    fontWeight: "bold",
-    margin: "0.1rem 0",
-  });
-
   return (
     <>
-      <div
-        style={{
-          position: "relative",
-          backgroundImage: "linear-gradient(to bottom, #ffffff, #FEC7A2)",
-          width: "100%",
-          height: "100vh",
-        }}
-      >
+      <PageContainer>
         <div
           style={{
             position: "absolute",
@@ -125,7 +119,7 @@ const Today = () => {
             </WeatherDataContainer>
           </StyledText>
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 };

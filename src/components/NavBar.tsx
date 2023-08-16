@@ -38,7 +38,7 @@ export default function NavBar() {
             right: "12rem",
           }}
         >
-          <StyledIconButton onClick={() => handleNavigation("/today")}>
+          <StyledIconButton onClick={() => navigate("/today")}>
             TODAY
           </StyledIconButton>
           <StyledIconButton onClick={() => handleNavigation("/hourly")}>
