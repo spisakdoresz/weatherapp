@@ -35,7 +35,9 @@ const ApiContextProvider = ({ children }) => {
 
     setLoading(true);
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${searchText}&appid=05a66915c31c9dbdc378a7a876e14c3c`
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchText}&appid=${
+        import.meta.env.VITE_APPID
+      }`
     )
       .then((response) => response.json())
       .then((resultJson: WeatherData) => {
