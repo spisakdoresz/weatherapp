@@ -1,4 +1,5 @@
 export interface WeatherData {
+  cod?: number;
   name: string;
   main: {
     temp: number;
