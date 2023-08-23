@@ -3,18 +3,28 @@ import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
-  const { updateSearchText } = useContext(ApiContext) as ApiContextType;
+  const { updateSearchText, weatherData, lastSuccessfulSearch } = useContext(
+    ApiContext
+  ) as ApiContextType;
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   const handleSearch = () => {
-    updateSearchText(searchTerm);
-    setSearchTerm(""); // Clearing Search Bar after search
-    setIsClicked(true); // Set the clicked state to true
-    setTimeout(() => {
-      setIsClicked(false); // Reset the clicked state after a delay
-    }, 200); // Adjust the delay as needed
+    if (searchTerm !== "") {
+      updateSearchText(searchTerm);
+      setSearchTerm("");
+      setIsClicked(true);
+      setTimeout(() => {
+        setIsClicked(false);
+      }, 200);
+    }
   };
 
   return (
@@ -32,6 +42,7 @@ const SearchBar = () => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyDown}
         placeholder="Search for cities"
         style={{
           padding: "10px",
@@ -47,6 +58,11 @@ const SearchBar = () => {
           cursor: "pointer",
         }}
       />
+      {lastSuccessfulSearch && !weatherData && (
+        <div style={{ marginTop: "10px" }}>
+          Last successful search: {lastSuccessfulSearch}
+        </div>
+      )}
     </div>
   );
 };

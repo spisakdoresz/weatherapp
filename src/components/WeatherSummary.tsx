@@ -7,12 +7,6 @@ interface WeatherSummaryProps {
 
 const WeatherSummary = ({ weatherData }: WeatherSummaryProps) => {
   if (weatherData && weatherData.main) {
-    // const temperatureCelsius = Math.round(weatherData.main.temp - 273.15);
-    const realFeel = Math.round(weatherData.main.feels_like - 273.15);
-    const humidity = weatherData.main.humidity;
-    const windSpeed = weatherData.wind.speed;
-    const rain = weatherData.rain?.["1h"];
-
     const isWeatherDataNotNull = weatherData && weatherData.main;
     return (
       isWeatherDataNotNull && (
@@ -52,7 +46,9 @@ const WeatherSummary = ({ weatherData }: WeatherSummaryProps) => {
             <div style={{ fontSize: "60px", fontWeight: "bold" }}>
               {Math.round(weatherData.main.temp - 273.15)}°C
             </div>
-            <div style={{ fontSize: "25px" }}>Real feel: {realFeel}°C</div>
+            <div style={{ fontSize: "25px" }}>
+              Real feel: {Math.round(weatherData.main.feels_like - 273.15)}°C
+            </div>
           </div>
           <div
             style={{
@@ -72,14 +68,12 @@ const WeatherSummary = ({ weatherData }: WeatherSummaryProps) => {
                 marginRight: "55px",
               }}
             >
-              <div style={{ fontSize: "24px" }}>Humidity: {humidity}%</div>
-              <div style={{ margin: "15px 0" }} />
               <div style={{ fontSize: "24px" }}>
-                Wind Speed: {windSpeed} m/s
+                Humidity: {weatherData.main.humidity}%
               </div>
               <div style={{ margin: "15px 0" }} />
               <div style={{ fontSize: "24px" }}>
-                Rain: {rain ? `${rain} mm` : "N/A"}
+                Wind Speed: {weatherData.wind.speed} m/s
               </div>
             </div>
           </div>

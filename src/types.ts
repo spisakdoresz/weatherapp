@@ -16,12 +16,6 @@ export interface WeatherData {
     speed: number;
     deg: number;
   };
-  rain?: {
-    "1h": number;
-  };
-  snow?: {
-    "1h": number;
-  };
   weather: WeatherCondition[];
   clouds: {
     all: number;
@@ -30,11 +24,6 @@ export interface WeatherData {
     sunrise: number;
     sunset: number;
   };
-  uvi: number;
-  visibility: number;
-  sunrise?: number;
-  sunset?: number;
-  dew_point?: number;
 }
 
 export interface WeatherCondition {

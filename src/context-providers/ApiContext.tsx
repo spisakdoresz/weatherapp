@@ -6,6 +6,7 @@ export type ApiContextType = {
   updateSearchText: (newText: string) => void;
   weatherData: WeatherData | null;
   loading: boolean;
+  lastSuccessfulSearch: string;
 };
 
 const ApiContext = createContext<ApiContextType | null>(null);
@@ -16,33 +17,50 @@ const ApiContextProvider = ({ children }) => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+  const [lastSuccessfulSearch, setLastSuccessfulSearch] = useState<string>("");
+
   const updateSearchText = (newText: string) => {
     setSearchText(newText);
   };
 
   useEffect(() => {
-    if (searchText === "") return; // Skip API call if searchText is empty
-    setLoading(true); // Start loading
+    if (searchText === "") {
+      if (lastSuccessfulSearch && !weatherData) {
+        return;
+      } else {
+        setWeatherData(null);
+        return;
+      }
+    }
+
+    setLoading(true);
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${searchText}&appid=05a66915c31c9dbdc378a7a876e14c3c`
     )
       .then((response) => response.json())
       .then((resultJson: WeatherData) => {
-        setWeatherData(resultJson);
-        setLoading(false);
+        if (resultJson.cod === 200) {
+          setWeatherData(resultJson);
+          setLoading(false);
+          setLastSuccessfulSearch(searchText);
+        } else {
+          setLoading(false);
+        }
       })
       .catch((err) => {
         console.error(err);
         setLoading(false);
+        setWeatherData(null);
       });
-  }, [searchText]);
+  }, [searchText, lastSuccessfulSearch]);
 
   return (
     <ApiContext.Provider
       value={{
         searchText,
         updateSearchText,
-        weatherData: weatherData,
+        weatherData,
+        lastSuccessfulSearch,
         loading,
       }}
     >
