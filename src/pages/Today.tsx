@@ -1,9 +1,6 @@
 import React from "react";
 import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
-import WeatherIcons from "../utils/WeatherIcons";
 import { styled } from "@mui/material";
-import PageContainer from "../components/PageContainer";
-import { useNavigate } from "react-router-dom";
 import {
   getWindDirectionText,
   kelvinToCelsius,
@@ -11,22 +8,18 @@ import {
 } from "../utils/consts";
 
 const WeatherDataContainer = styled("div")({
+  padding: "25px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: "3rem",
   textAlign: "center",
-  "& > *:not(:first-of-type)": {
+  "& > *:not(:last-of-type)": {
     borderBottom: "1px solid #ccc",
     marginBottom: "0.2rem",
     paddingBottom: "0.2rem",
-    width: "35%",
+    borderColor: "white",
+    width: "30%",
   },
-});
-
-const StyledButton = styled("div")({
-  outline: "none",
-  cursor: "pointer",
 });
 
 const StyledDataItem = styled("div")({
@@ -36,10 +29,6 @@ const StyledDataItem = styled("div")({
 });
 
 const Today = () => {
-  const navigate = useNavigate();
-  const navigateToHomepage = () => {
-    navigate("/");
-  };
   const { weatherData } = React.useContext(ApiContext) as ApiContextType;
 
   if (!weatherData) {
@@ -51,84 +40,67 @@ const Today = () => {
   });
 
   return (
-    <>
-      <PageContainer>
-        <div
-          style={{
-            position: "absolute",
-            backgroundImage:
-              "url(https://tionimpo.sirv.com/Images/weatherwizbanner.png)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            top: "1rem",
-            left: "12rem",
-            right: "12rem",
-            borderRadius: "1.5rem",
-          }}
-          aria-label=""
-        >
-          <StyledButton onClick={navigateToHomepage}>BACK</StyledButton>
-          <StyledText>
-            <div
-              style={{
-                alignItems: "center",
-                display: "flex",
-                justifyContent: "center",
-                position: "absolute",
-                top: "10px",
-                left: "50%",
-                transform: "translateX(-50%)",
-                color: "black",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              Today's Weather in {weatherData.name}
-            </div>
-
-            <WeatherDataContainer>
-              <WeatherIcons weather={weatherData.weather[0]} />
-              <StyledDataItem>
-                {weatherData.weather[0].description}
-              </StyledDataItem>
-              <StyledDataItem>
-                Temperature: {kelvinToCelsius(weatherData.main.temp)}°C
-              </StyledDataItem>
-              <StyledDataItem>
-                Min temp: {kelvinToCelsius(weatherData.main.temp_min || 0)}°C
-                Max temp: {kelvinToCelsius(weatherData.main.temp_max || 0)}°C
-              </StyledDataItem>
-              <StyledDataItem>
-                Real Feel: {kelvinToCelsius(weatherData.main.feels_like)}°C
-              </StyledDataItem>
-              <StyledDataItem>
-                Humidity: {weatherData.main.humidity}%
-              </StyledDataItem>
-              <StyledDataItem>
-                Pressure: {weatherData.main.pressure} hPa
-              </StyledDataItem>
-              <StyledDataItem>
-                Wind Speed: {weatherData.wind.speed} m/s
-              </StyledDataItem>
-              <StyledDataItem>
-                Wind Direction: {getWindDirectionText(weatherData.wind.deg)}
-              </StyledDataItem>
-              <StyledDataItem>
-                Cloudiness: {weatherData.clouds.all}%
-              </StyledDataItem>
-              <StyledDataItem>
-                Sunrise:{" "}
-                {unixTimestampToLocaleTimeString(weatherData.sys.sunrise)}
-              </StyledDataItem>
-              <StyledDataItem>
-                Sunset:{" "}
-                {unixTimestampToLocaleTimeString(weatherData.sys.sunset)}
-              </StyledDataItem>
-            </WeatherDataContainer>
-          </StyledText>
-        </div>
-      </PageContainer>
-    </>
+    <div id="today">
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+          color: "black",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          fontFamily: "monospace",
+          marginTop: "3vh",
+        }}
+      >
+        TODAY'S WEATHER IN {weatherData.name}
+      </div>
+      <div
+        style={{
+          marginTop: "3vh",
+          backgroundImage:
+            "url(https://tionimpo.sirv.com/Images/weatherwizbanner.png)",
+          backgroundColor: "rgba(128, 128, 128, 0.3)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          marginLeft: "12rem",
+          marginRight: "12rem",
+          borderRadius: "1.5rem",
+        }}
+        aria-label=""
+      >
+        <StyledText>
+          <WeatherDataContainer>
+            <StyledDataItem>
+              Min temp: {kelvinToCelsius(weatherData.main.temp_min || 0)}°C Max
+              temp: {kelvinToCelsius(weatherData.main.temp_max || 0)}°C
+            </StyledDataItem>
+            <StyledDataItem>
+              Humidity: {weatherData.main.humidity}%
+            </StyledDataItem>
+            <StyledDataItem>
+              Pressure: {weatherData.main.pressure} hPa
+            </StyledDataItem>
+            <StyledDataItem>
+              Wind Speed: {weatherData.wind.speed} m/s
+            </StyledDataItem>
+            <StyledDataItem>
+              Wind Direction: {getWindDirectionText(weatherData.wind.deg)}
+            </StyledDataItem>
+            <StyledDataItem>
+              Cloudiness: {weatherData.clouds.all}%
+            </StyledDataItem>
+            <StyledDataItem>
+              Sunrise:{" "}
+              {unixTimestampToLocaleTimeString(weatherData.sys.sunrise)}
+            </StyledDataItem>
+            <StyledDataItem>
+              Sunset: {unixTimestampToLocaleTimeString(weatherData.sys.sunset)}
+            </StyledDataItem>
+          </WeatherDataContainer>
+        </StyledText>
+      </div>
+    </div>
   );
 };
 

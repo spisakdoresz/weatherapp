@@ -4,7 +4,6 @@ const Footer = () => {
       style={{
         backgroundColor: "#FEC7A2",
         height: "200px",
-        position: "sticky",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -13,8 +12,6 @@ const Footer = () => {
       <footer
         style={{
           textAlign: "center",
-          marginTop: "1.25rem",
-          padding: "0.625rem",
         }}
       >
         Weather Wiz &copy; {new Date().getFullYear()}

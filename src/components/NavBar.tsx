@@ -2,6 +2,7 @@ import { styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import { IconButton } from "@material-ui/core";
+import { HashLink } from "react-router-hash-link";
 
 const StyledBox = styled("div")({
   display: "flex",
@@ -16,6 +17,13 @@ const StyledIconButton = styled(IconButton)({
   color: "white",
   fontFamily: "monospace",
   fontSize: "1.3rem",
+});
+
+const StyledHashLink = styled(HashLink)({
+  color: "white",
+  fontFamily: "monospace",
+  fontSize: "1.3rem",
+  textDecoration: "none",
 });
 
 export default function NavBar() {
@@ -38,21 +46,21 @@ export default function NavBar() {
             right: "12rem",
           }}
         >
-          <StyledIconButton onClick={() => navigate("/today")}>
+          <StyledHashLink to="#today" smooth>
             TODAY
-          </StyledIconButton>
+          </StyledHashLink>
           <StyledIconButton onClick={() => handleNavigation("/hourly")}>
             HOURLY
           </StyledIconButton>
-          <StyledIconButton onClick={() => handleNavigation("/radar")}>
+          <StyledHashLink to="#radar" smooth>
             RADAR
-          </StyledIconButton>
+          </StyledHashLink>
           <StyledIconButton onClick={() => handleNavigation("/forecast")}>
             FORECAST
           </StyledIconButton>
-          <StyledIconButton onClick={() => handleNavigation("/airquality")}>
+          <StyledHashLink to="#airquality" smooth>
             AIR QUALITY
-          </StyledIconButton>
+          </StyledHashLink>
         </div>
       </StyledBox>
     </React.Fragment>

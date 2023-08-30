@@ -5,7 +5,6 @@ import ForeCast from "./pages/ForeCast";
 import Radar from "./pages/Radar";
 import NavBar from "./components/NavBar";
 import AirQuality from "./pages/AirQuality";
-import Daily from "./pages/Daily";
 import Hourly from "./pages/Hourly";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -17,7 +16,6 @@ function AppRoutes() {
       <Route path="/" element={<HomePage />} />
       <Route path="/today" element={<Today />} />
       <Route path="/hourly" element={<Hourly />} />
-      <Route path="/daily" element={<Daily />} />
       <Route path="/radar" element={<Radar />} />
       <Route path="/forecast" element={<ForeCast />} />
       <Route path="/airquality" element={<AirQuality />} />

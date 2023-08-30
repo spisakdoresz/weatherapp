@@ -56,17 +56,40 @@ const Radar = () => {
   }, []);
 
   return (
-    <div>
-      {mapWeatherData.imageUrl && (
-        <img src={mapWeatherData.imageUrl} alt="Weather Map" />
-      )}
-      <iframe
-        src="http://www.zoomforecast.com/zoomradar_weather_map/weather_image_user.php?key=QqKbiO1WI2CAo9g"
-        width="600"
-        height="500"
-        frameBorder="0"
-        scrolling="no"
-      ></iframe>
+    <div id="radar">
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+          color: "black",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          fontFamily: "monospace",
+          marginTop: "3vh",
+          marginBottom: "3vh",
+        }}
+      >
+        RADAR
+      </div>
+      {/* {mapWeatherData.imageUrl && (
+        // <img src={mapWeatherData.imageUrl} alt="Weather Map" />
+      )} */}
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <iframe
+          src="http://www.zoomforecast.com/zoomradar_weather_map/weather_image_user.php?key=QqKbiO1WI2CAo9g"
+          width="600"
+          height="500"
+          frameBorder="0"
+          scrolling="no"
+        ></iframe>
+      </div>
     </div>
   );
 };
