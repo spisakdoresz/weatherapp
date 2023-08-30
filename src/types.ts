@@ -72,9 +72,11 @@ export interface AirQualityData {
   };
 }
 
-export interface WeatherForecastData {
-  time: number;
-  values: {
-    temperature: number;
-  };
+export interface HourlyWeather {
+  days: {
+    hours: {
+      datetime: string;
+      temp: number;
+    }[];
+  }[];
 }

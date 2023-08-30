@@ -1,7 +1,6 @@
 import { styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import React from "react";
-import { IconButton } from "@material-ui/core";
 import { HashLink } from "react-router-hash-link";
 
 const StyledBox = styled("div")({
@@ -21,8 +20,6 @@ const StyledHashLink = styled(HashLink)({
 });
 
 export default function NavBar() {
-  const navigate = useNavigate();
-
   return (
     <React.Fragment>
       <StyledBox>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   BasicCityWeatherContext,
   BasicCityWeatherContextType,
@@ -56,7 +56,7 @@ const Hourly = () => {
         <div style={{ display: "flex", justifyContent: "center" }}>
           {forecastData.days[0].hours
             .slice(getCurrentHour(), getCurrentHour() + 8)
-            .map((hour, index) => (
+            .map((hour: any, index: any) => (
               <div
                 key={index}
                 style={{

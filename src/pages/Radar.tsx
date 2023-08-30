@@ -13,8 +13,8 @@ const defaultMapWeatherData = {
 };
 
 const Radar = () => {
-  const [mapWeatherData, setMapWeatherData] = useState(defaultMapWeatherData);
-  const [loading, setLoading] = useState(true);
+  const [, setMapWeatherData] = useState(defaultMapWeatherData);
+  const [, setLoading] = useState(true);
 
   const fetchMapWeatherData = (latitude: number, longitude: number) => {
     setLoading(true);

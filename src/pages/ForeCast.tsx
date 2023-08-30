@@ -47,7 +47,7 @@
 
 // export default ForeCast;
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ForeCast = () => {
   const [forecastData, setForecastData] = useState(null);

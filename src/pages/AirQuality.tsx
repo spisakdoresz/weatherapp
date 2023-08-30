@@ -29,15 +29,6 @@ const StyledTableTypography = styled("div")({
   margin: "0.1rem 0",
 });
 
-const StyledTableHeadTypography = styled("div")({
-  justifyContent: "center",
-  display: "flex",
-  fontFamily: "monospace",
-  fontSize: "0.5rem",
-  color: "black",
-  fontWeight: "bold",
-});
-
 const StyledAirQualityContainer = styled("div")({
   // padding: "25px",
   display: "flex",
@@ -53,13 +44,6 @@ const StyledAirQualityContainer = styled("div")({
   //   borderColor: "white",
   //   width: "40%",
   // },
-});
-
-const StyledDataItem = styled("div")({
-  fontSize: "1.2rem",
-  margin: "0.1rem 0",
-  justifyContent: "space-between",
-  display: "flex",
 });
 
 const AirQuality = () => {

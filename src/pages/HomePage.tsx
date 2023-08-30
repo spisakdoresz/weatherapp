@@ -3,12 +3,9 @@ import {
   BasicCityWeatherContext,
   BasicCityWeatherContextType,
 } from "../context-providers/BasicCityWeatherContext";
-import { Stack, styled } from "@mui/material";
 import WeatherSummary from "../components/WeatherSummary";
 import PageContainer from "../components/PageContainer";
 import Today from "./Today";
-import Radar from "./Radar";
-import Footer from "../components/Footer";
 import AirQuality from "./AirQuality";
 import Hourly from "./Hourly";
 
