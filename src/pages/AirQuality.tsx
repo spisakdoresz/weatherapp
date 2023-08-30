@@ -1,5 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
+import { useContext, useEffect, useState } from "react";
+import {
+  BasicCityWeatherContext,
+  BasicCityWeatherContextType,
+} from "../context-providers/BasicCityWeatherContext";
 import { styled } from "@mui/material";
 import {
   getAiqEvaluation,
@@ -41,7 +44,9 @@ const StyledDataItem = styled("div")({
 
 const AirQuality = () => {
   const API_KEY = "05a66915c31c9dbdc378a7a876e14c3c";
-  const { lastSuccessfulSearch } = useContext(ApiContext) as ApiContextType;
+  const { lastSuccessfulSearch } = useContext(
+    BasicCityWeatherContext
+  ) as BasicCityWeatherContextType;
 
   const [airQualityData, setAirQualityData] = useState<any | null>(null);
 

@@ -1,5 +1,8 @@
 import React from "react";
-import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
+import {
+  BasicCityWeatherContext,
+  BasicCityWeatherContextType,
+} from "../context-providers/BasicCityWeatherContext";
 import { styled } from "@mui/material";
 import {
   getWindDirectionText,
@@ -33,7 +36,9 @@ const StyledText = styled("div")({
 });
 
 const Today = () => {
-  const { weatherData } = React.useContext(ApiContext) as ApiContextType;
+  const { weatherData } = React.useContext(
+    BasicCityWeatherContext
+  ) as BasicCityWeatherContextType;
 
   if (!weatherData) {
     return <div>Loading...</div>;

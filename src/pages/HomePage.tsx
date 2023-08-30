@@ -1,5 +1,8 @@
 import React from "react";
-import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
+import {
+  BasicCityWeatherContext,
+  BasicCityWeatherContextType,
+} from "../context-providers/BasicCityWeatherContext";
 import { Stack, styled } from "@mui/material";
 import WeatherSummary from "../components/WeatherSummary";
 import PageContainer from "../components/PageContainer";
@@ -9,7 +12,9 @@ import Footer from "../components/Footer";
 import AirQuality from "./AirQuality";
 
 const HomePage = () => {
-  const { weatherData } = React.useContext(ApiContext) as ApiContextType;
+  const { weatherData } = React.useContext(
+    BasicCityWeatherContext
+  ) as BasicCityWeatherContextType;
 
   console.log(weatherData);
   return (

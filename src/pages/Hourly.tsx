@@ -1,8 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
+import {
+  BasicCityWeatherContext,
+  BasicCityWeatherContextType,
+} from "../context-providers/BasicCityWeatherContext";
 
 const Hourly = () => {
-  const { lastSuccessfulSearch } = useContext(ApiContext) as ApiContextType;
+  const { lastSuccessfulSearch } = useContext(
+    BasicCityWeatherContext
+  ) as BasicCityWeatherContextType;
   const [forecastData, setForecastData] = useState(null);
   useEffect(() => {
     if (!lastSuccessfulSearch) {

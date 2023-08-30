@@ -8,7 +8,7 @@ import AirQuality from "./pages/AirQuality";
 import Hourly from "./pages/Hourly";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { ApiContextProvider } from "./context-providers/ApiContext";
+import { BasicCityWeatherContextProvider } from "./context-providers/BasicCityWeatherContext";
 
 function AppRoutes() {
   return (
@@ -26,14 +26,14 @@ function AppRoutes() {
 function App() {
   return (
     <Router>
-      <ApiContextProvider>
+      <BasicCityWeatherContextProvider>
         <div>
           <Header />
           <NavBar />
           <AppRoutes />
           <Footer />
         </div>
-      </ApiContextProvider>
+      </BasicCityWeatherContextProvider>
     </Router>
   );
 }

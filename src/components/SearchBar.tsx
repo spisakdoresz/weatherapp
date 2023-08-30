@@ -1,11 +1,14 @@
 import { useContext, useState } from "react";
-import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
+import {
+  BasicCityWeatherContext,
+  BasicCityWeatherContextType,
+} from "../context-providers/BasicCityWeatherContext";
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
   const { updateSearchText, weatherData, lastSuccessfulSearch } = useContext(
-    ApiContext
-  ) as ApiContextType;
+    BasicCityWeatherContext
+  ) as BasicCityWeatherContextType;
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isClicked, setIsClicked] = useState<boolean>(false);

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { WeatherData } from "../types";
 
-export type ApiContextType = {
+export type BasicCityWeatherContextType = {
   searchText: string;
   updateSearchText: (newText: string) => void;
   weatherData: WeatherData | null;
@@ -9,10 +9,11 @@ export type ApiContextType = {
   lastSuccessfulSearch: string;
 };
 
-const ApiContext = createContext<ApiContextType | null>(null);
+const BasicCityWeatherContext =
+  createContext<BasicCityWeatherContextType | null>(null);
 
 // @ts-ignore
-const ApiContextProvider = ({ children }) => {
+const BasicCityWeatherContextProvider = ({ children }) => {
   const [searchText, setSearchText] = useState<string>("Budapest");
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -57,7 +58,7 @@ const ApiContextProvider = ({ children }) => {
   }, [searchText, lastSuccessfulSearch]);
 
   return (
-    <ApiContext.Provider
+    <BasicCityWeatherContext.Provider
       value={{
         searchText,
         updateSearchText,
@@ -67,8 +68,8 @@ const ApiContextProvider = ({ children }) => {
       }}
     >
       {children}
-    </ApiContext.Provider>
+    </BasicCityWeatherContext.Provider>
   );
 };
 
-export { ApiContext, ApiContextProvider };
+export { BasicCityWeatherContext, BasicCityWeatherContextProvider };

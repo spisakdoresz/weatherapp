@@ -3,7 +3,10 @@ import homeImage from "/logo.png";
 import { styled } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
-import { ApiContext, ApiContextType } from "../context-providers/ApiContext";
+import {
+  BasicCityWeatherContext,
+  BasicCityWeatherContextType,
+} from "../context-providers/BasicCityWeatherContext";
 
 const HeaderContainer = styled("div")({
   display: "flex",
@@ -24,8 +27,8 @@ const StyledBox = styled("div")({
 const Header = () => {
   const navigate = useNavigate();
   const { weatherData, loading } = React.useContext(
-    ApiContext
-  ) as ApiContextType;
+    BasicCityWeatherContext
+  ) as BasicCityWeatherContextType;
 
   const handleNavigation = (path: string) => {
     navigate(path);
