@@ -1,5 +1,4 @@
 import { styled } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import React from "react";
 import { HashLink } from "react-router-hash-link";
 
