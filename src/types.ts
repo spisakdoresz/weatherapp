@@ -71,3 +71,10 @@ export interface AirQualityData {
     country: string;
   };
 }
+
+export interface WeatherForecastData {
+  time: number;
+  values: {
+    temperature: number;
+  };
+}
