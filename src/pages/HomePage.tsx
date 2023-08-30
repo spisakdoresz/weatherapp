@@ -10,6 +10,7 @@ import Today from "./Today";
 import Radar from "./Radar";
 import Footer from "../components/Footer";
 import AirQuality from "./AirQuality";
+import Hourly from "./Hourly";
 
 const HomePage = () => {
   const { weatherData } = React.useContext(
@@ -49,7 +50,8 @@ const HomePage = () => {
           <WeatherSummary weatherData={weatherData} />
         </div>
         <Today />
-        <Radar />
+        <Hourly />
+        {/* <Radar /> */}
         <AirQuality />
       </PageContainer>
     </>

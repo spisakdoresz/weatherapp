@@ -21,7 +21,7 @@ const WeatherDataContainer = styled("div")({
     marginBottom: "0.2rem",
     paddingBottom: "0.2rem",
     borderColor: "white",
-    width: "30%",
+    width: "25%",
   },
 });
 
@@ -77,8 +77,10 @@ const Today = () => {
         <StyledText>
           <WeatherDataContainer>
             <StyledDataItem>
-              Min temp: {kelvinToCelsius(weatherData.main.temp_min || 0)}°C Max
-              temp: {kelvinToCelsius(weatherData.main.temp_max || 0)}°C
+              Min temp: {kelvinToCelsius(weatherData.main.temp_min || 0)}°C
+            </StyledDataItem>
+            <StyledDataItem>
+              Max temp: {kelvinToCelsius(weatherData.main.temp_max || 0)}°C
             </StyledDataItem>
             <StyledDataItem>
               Humidity: {weatherData.main.humidity}%

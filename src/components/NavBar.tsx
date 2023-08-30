@@ -13,12 +13,6 @@ const StyledBox = styled("div")({
   border: "0.5px solid #F9AB94",
 });
 
-const StyledIconButton = styled(IconButton)({
-  color: "white",
-  fontFamily: "monospace",
-  fontSize: "1.3rem",
-});
-
 const StyledHashLink = styled(HashLink)({
   color: "white",
   fontFamily: "monospace",
@@ -28,10 +22,6 @@ const StyledHashLink = styled(HashLink)({
 
 export default function NavBar() {
   const navigate = useNavigate();
-
-  const handleNavigation = (path: string) => {
-    navigate(path);
-  };
 
   return (
     <React.Fragment>
@@ -49,15 +39,15 @@ export default function NavBar() {
           <StyledHashLink to="#today" smooth>
             TODAY
           </StyledHashLink>
-          <StyledIconButton onClick={() => handleNavigation("/hourly")}>
+          <StyledHashLink to="#hourly" smooth>
             HOURLY
-          </StyledIconButton>
-          <StyledHashLink to="#radar" smooth>
+          </StyledHashLink>
+          {/* <StyledHashLink to="#radar" smooth>
             RADAR
           </StyledHashLink>
           <StyledIconButton onClick={() => handleNavigation("/forecast")}>
             FORECAST
-          </StyledIconButton>
+          </StyledIconButton> */}
           <StyledHashLink to="#airquality" smooth>
             AIR QUALITY
           </StyledHashLink>

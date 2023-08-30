@@ -27,3 +27,12 @@ export const getWindDirectionText = (windDegrees: number): string => {
     return "";
   }
 };
+
+export const fahrenheitToCelsius = (fahrenheit: number): number => {
+  const celsius = (fahrenheit - 32) * (5 / 9);
+  return Math.round(celsius);
+};
+
+export const formatTime = (datetime: string): string => {
+  return datetime.slice(0, 5);
+};

@@ -3,7 +3,7 @@ import {
   BasicCityWeatherContext,
   BasicCityWeatherContextType,
 } from "../context-providers/BasicCityWeatherContext";
-import { styled } from "@mui/material";
+import { TableCell, TableRow, styled } from "@mui/material";
 import {
   getAiqEvaluation,
   getNo2Evaluation,
@@ -11,28 +11,48 @@ import {
   getPm10Evaluation,
   getPm2_5Evaluation,
 } from "../utils/util";
+import { Table, TableHead } from "@material-ui/core";
 
-const StyledFontType = styled("div")({
-  color: "black",
+// const StyledFontType = styled("div")({
+//   // color: "black",
+//   // fontFamily: "monospace",
+//   // fontSize: "1rem",
+// });
+
+const StyledTableTypography = styled("div")({
+  justifyContent: "center",
+  display: "flex",
   fontFamily: "monospace",
   fontSize: "1rem",
+  color: "black",
+  fontWeight: "bold",
+  margin: "0.1rem 0",
+});
+
+const StyledTableHeadTypography = styled("div")({
+  justifyContent: "center",
+  display: "flex",
+  fontFamily: "monospace",
+  fontSize: "0.5rem",
+  color: "black",
+  fontWeight: "bold",
 });
 
 const StyledAirQualityContainer = styled("div")({
-  padding: "25px",
+  // padding: "25px",
   display: "flex",
-  marginLeft: "2vh",
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
-  justifyContent: "space-between",
-  "& > *:not(:last-of-type)": {
-    borderBottom: "1px solid #ccc",
-    marginBottom: "0.2rem",
-    paddingBottom: "0.2rem",
-    borderColor: "white",
-    width: "65%",
-  },
+  marginLeft: "20%", // Bal oldalra 20% margó
+  marginRight: "20%", // Jobb oldalra 20% margó
+  // "& > *:not(:first-of-type)": {
+  //   borderBottom: "1px solid #ccc",
+  //   marginBottom: "0.2rem",
+  //   paddingBottom: "0.2rem",
+  //   borderColor: "white",
+  //   width: "40%",
+  // },
 });
 
 const StyledDataItem = styled("div")({
@@ -106,67 +126,129 @@ const AirQuality = () => {
       >
         {airQualityData && (
           <div>
-            <StyledFontType>
-              <StyledAirQualityContainer>
-                <StyledDataItem>
-                  <div>Current Pollutants</div>
-                  <div>Air Quality Scale</div>
-                  <div>Pollutant concentration in μg/m3</div>
-                </StyledDataItem>
-                <StyledDataItem>
-                  <div>AQI:</div>
-                  <div>{getAiqEvaluation(airQualityData.list[0].main.aqi)}</div>
-                  <div>{airQualityData.list[0].main.aqi}</div>
-                </StyledDataItem>
-                <StyledDataItem>
-                  <div>
-                    NO<sub>2</sub>:
-                  </div>
-                  <div>
-                    {getNo2Evaluation(airQualityData.list[0].components.no2)}
-                  </div>
+            <StyledAirQualityContainer>
+              <Table>
+                {/* <TableHead>
+                    <TableRow>
+                      <TableCell>
+                        <StyledTableHeadTypography>
+                          Current Pollutants
+                        </StyledTableHeadTypography>
+                      </TableCell>
+                      <TableCell>
+                        <StyledTableHeadTypography>
+                          Air Quality Scale
+                        </StyledTableHeadTypography>
+                      </TableCell>
+                      <TableCell>
+                        <StyledTableHeadTypography>
+                          Pollutant concentration in μg/m3
+                        </StyledTableHeadTypography>
+                      </TableCell>
+                    </TableRow>
+                  </TableHead> */}
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <StyledTableTypography>AQI:</StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {getAiqEvaluation(airQualityData.list[0].main.aqi)}
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {airQualityData.list[0].main.aqi}
+                      </StyledTableTypography>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <StyledTableTypography>
+                        NO<sub>2</sub>:
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {getNo2Evaluation(
+                          airQualityData.list[0].components.no2
+                        )}
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {airQualityData.list[0].components.no2}
+                      </StyledTableTypography>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <StyledTableTypography>
+                        O<sub>3</sub>:
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {getO3Evaluation(airQualityData.list[0].components.o3)}
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {airQualityData.list[0].components.o3}
+                      </StyledTableTypography>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <StyledTableTypography>
+                        PM<sub>10</sub>:
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {getPm10Evaluation(
+                          airQualityData.list[0].components.pm10
+                        )}
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {airQualityData.list[0].components.pm10}
+                      </StyledTableTypography>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
 
-                  <div> {airQualityData.list[0].components.no2}</div>
-                </StyledDataItem>
-                <StyledDataItem>
-                  <div>
-                    {" "}
-                    O<sub>3</sub>:{" "}
-                  </div>
-                  <div>
-                    {" "}
-                    {getO3Evaluation(airQualityData.list[0].components.o3)}{" "}
-                  </div>
-                  <div> {airQualityData.list[0].components.o3} </div>
-                </StyledDataItem>
-                <StyledDataItem>
-                  <div>
-                    {" "}
-                    PM<sub>10</sub>:{" "}
-                  </div>
-                  <div>
-                    {" "}
-                    {getPm10Evaluation(
-                      airQualityData.list[0].components.pm10
-                    )}{" "}
-                  </div>
-                  <div> {airQualityData.list[0].components.pm10} </div>
-                </StyledDataItem>
-                <StyledDataItem>
-                  <div>
-                    {" "}
-                    PM<sub>2.5</sub>:{" "}
-                  </div>
-                  <div>
-                    {" "}
-                    {getPm2_5Evaluation(
-                      airQualityData.list[0].components.pm2_5
-                    )}{" "}
-                  </div>
-                  <div> {airQualityData.list[0].components.pm2_5} </div>
-                </StyledDataItem>
-              </StyledAirQualityContainer>
-            </StyledFontType>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>
+                      <StyledTableTypography>
+                        PM<sub>2.5</sub>:
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {getPm2_5Evaluation(
+                          airQualityData.list[0].components.pm2_5
+                        )}
+                      </StyledTableTypography>
+                    </TableCell>
+                    <TableCell>
+                      <StyledTableTypography>
+                        {airQualityData.list[0].components.pm2_5}
+                      </StyledTableTypography>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+              </Table>
+            </StyledAirQualityContainer>
           </div>
         )}
       </div>
