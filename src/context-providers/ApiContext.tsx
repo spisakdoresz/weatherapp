@@ -32,7 +32,6 @@ const ApiContextProvider = ({ children }) => {
         return;
       }
     }
-    console.log(import.meta.env.MODE);
 
     setLoading(true);
     fetch(

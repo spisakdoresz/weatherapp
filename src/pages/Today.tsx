@@ -28,16 +28,16 @@ const StyledDataItem = styled("div")({
   margin: "0.1rem 0",
 });
 
+const StyledText = styled("div")({
+  fontFamily: "monospace",
+});
+
 const Today = () => {
   const { weatherData } = React.useContext(ApiContext) as ApiContextType;
 
   if (!weatherData) {
     return <div>Loading...</div>;
   }
-
-  const StyledText = styled("div")({
-    fontFamily: "monospace",
-  });
 
   return (
     <div id="today">
