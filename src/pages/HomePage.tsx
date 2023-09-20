@@ -9,14 +9,12 @@ import Today from "./Today";
 import AirQuality from "./AirQuality";
 import Hourly from "./Hourly";
 import ForeCast from "./ForeCast";
-import Radar from "./Radar";
 
 const HomePage = () => {
   const { weatherData } = React.useContext(
     BasicCityWeatherContext
   ) as BasicCityWeatherContextType;
 
-  console.log(weatherData);
   return (
     <>
       <PageContainer>

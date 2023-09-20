@@ -78,7 +78,7 @@ const ForeCast = () => {
       .catch((error) => {
         console.error("Error fetching forecast data:", error);
       });
-  }, []);
+  }, [lastSuccessfulSearch]);
 
   return (
     <div id="forecast">
@@ -96,7 +96,6 @@ const ForeCast = () => {
       >
         NEXT 15 DAYS FORECAST
       </div>
-
       {forecastData && (
         <div style={{ display: "flex", justifyContent: "center" }}>
           {forecastData.days?.slice(0, 15).map((day) => (
@@ -122,7 +121,6 @@ const ForeCast = () => {
                 fontSize: "1rem",
               }}
             >
-              {console.log("Day Icon:", day.icon)}
               <div>
                 <p>{formatDate(day.datetime)}</p>
               </div>
@@ -143,7 +141,7 @@ const ForeCast = () => {
                 <p> Description: {day.description}</p>
               </div>
               <div>
-                <WeatherIcons weather={{ id: 800, icon: "clearday" }} />
+                <WeatherIcons weather={{ id: day.icon, icon: "clearday" }} />
               </div>
             </div>
           ))}

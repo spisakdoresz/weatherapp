@@ -14,9 +14,10 @@ const iconStyles = {
 
 const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
   const isDaytime = weather.icon.includes("d");
+
   const weatherIcons: { [key: number | string]: string } = {
     200: "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
-    thundershowersday:
+    "thunder-showers-day":
       "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
     201: "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
     202: "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
@@ -36,7 +37,8 @@ const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
     313: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     314: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     321: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
-    showersday: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
+    "showers-day":
+      "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     500: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     501: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     502: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
@@ -74,14 +76,14 @@ const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
     800: isDaytime
       ? "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png"
       : "https://tionimpo.sirv.com/Images/weatherapp/clearNight.png",
-    clearday: "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png",
-    clearnight: "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png",
+    "clear-day": "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png",
+    "clear-night": "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png",
     801: isDaytime
       ? "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsDay.png"
       : "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsNight.png",
-    partlycloudyday:
+    "partly-cloudy-day":
       "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsDay.png",
-    partlycloudynight:
+    "partly-cloudy-night":
       "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsDay.png",
     802: isDaytime
       ? "https://tionimpo.sirv.com/Images/weatherapp/scatteredCloudsDay.png"
