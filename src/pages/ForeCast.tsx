@@ -47,15 +47,28 @@
 
 // export default ForeCast;
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import {
+  BasicCityWeatherContext,
+  BasicCityWeatherContextType,
+} from "../context-providers/BasicCityWeatherContext";
+import { fahrenheitToCelsius, formatDate } from "../utils/consts";
+import WeatherIcons from "../utils/WeatherIcons";
+import { ForeCastWeather } from "../types";
 
 const ForeCast = () => {
+  const { lastSuccessfulSearch } = useContext(
+    BasicCityWeatherContext
+  ) as BasicCityWeatherContextType;
   const [forecastData, setForecastData] = useState(null);
 
   useEffect(() => {
-    const apiKey = "D9L0k9UX2AY8ZNncRZ43ulGcP7jcxEBE";
-    const location = "new york";
-    const apiUrl = `https://api.tomorrow.io/v4/weather/forecast?location=${location}&apikey=${apiKey}`;
+    if (!lastSuccessfulSearch) {
+      return;
+    }
+    const apiKey = "9CHYZKME2JKSMQAH86EQMBB5Z";
+    const location = lastSuccessfulSearch;
+    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&key=${apiKey}`;
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -68,12 +81,73 @@ const ForeCast = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Weather Forecast</h2>
-      {forecastData ? (
-        <pre>{JSON.stringify(forecastData, null, 2)}</pre>
-      ) : (
-        <p>Loading forecast data...</p>
+    <div id="forecast">
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+          color: "black",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          fontFamily: "monospace",
+          marginTop: "3vh",
+        }}
+      >
+        NEXT 15 DAYS FORECAST
+      </div>
+
+      {forecastData && (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {forecastData.days?.slice(0, 15).map((day) => (
+            <div
+              key={day.datetime}
+              style={{
+                width: "70px",
+                height: "400px",
+                backgroundImage:
+                  "url(https://tionimpo.sirv.com/Images/weatherwizbanner.png)",
+                backgroundPosition: "right",
+
+                margin: "5px",
+                padding: "10px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                fontFamily: "monospace",
+                borderRadius: "1.5rem",
+                marginTop: "3vh",
+                fontWeight: "bold",
+                fontSize: "1rem",
+              }}
+            >
+              {console.log("Day Icon:", day.icon)}
+              <div>
+                <p>{formatDate(day.datetime)}</p>
+              </div>
+              <div
+                style={{
+                  backgroundColor: "#FEC7A2",
+                  borderRadius: "10rem",
+                }}
+              >
+                <p>{fahrenheitToCelsius(day.tempmax)}°C</p>
+              </div>
+              <div
+                style={{ backgroundColor: "lightgrey", borderRadius: "10rem" }}
+              >
+                <p>{fahrenheitToCelsius(day.tempmin)}°C</p>
+              </div>
+              <div>
+                <p> Description: {day.description}</p>
+              </div>
+              <div>
+                <WeatherIcons weather={{ id: 800, icon: "clearday" }} />
+              </div>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

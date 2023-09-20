@@ -50,7 +50,7 @@ const Hourly = () => {
           marginTop: "3vh",
         }}
       >
-        HOURLY
+        NEXT 8 HOURS FORECAST
       </div>
       {forecastData && forecastData.days[0].hours ? (
         <div style={{ display: "flex", justifyContent: "center" }}>

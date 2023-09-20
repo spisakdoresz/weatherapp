@@ -41,9 +41,10 @@ export default function NavBar() {
           {/* <StyledHashLink to="#radar" smooth>
             RADAR
           </StyledHashLink>
-          <StyledIconButton onClick={() => handleNavigation("/forecast")}>
+           */}
+          <StyledHashLink to="#forecast" smooth>
             FORECAST
-          </StyledIconButton> */}
+          </StyledHashLink>
           <StyledHashLink to="#airquality" smooth>
             AIR QUALITY
           </StyledHashLink>

@@ -80,3 +80,13 @@ export interface HourlyWeather {
     }[];
   }[];
 }
+
+export interface ForeCastWeather {
+  days: {
+    datetime: string;
+    tempmax: number;
+    tempmin: number;
+    description: string;
+    icon: string;
+  }[];
+}

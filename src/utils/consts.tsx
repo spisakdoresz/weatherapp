@@ -36,3 +36,9 @@ export const fahrenheitToCelsius = (fahrenheit: number): number => {
 export const formatTime = (datetime: string): string => {
   return datetime.slice(0, 5);
 };
+
+export function formatDate(dateString: string): string {
+  const options = { weekday: "short", day: "numeric" };
+  const date = new Date(dateString);
+  return date.toLocaleDateString("hu-HU", options);
+}

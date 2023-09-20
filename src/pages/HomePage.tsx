@@ -8,6 +8,8 @@ import PageContainer from "../components/PageContainer";
 import Today from "./Today";
 import AirQuality from "./AirQuality";
 import Hourly from "./Hourly";
+import ForeCast from "./ForeCast";
+import Radar from "./Radar";
 
 const HomePage = () => {
   const { weatherData } = React.useContext(
@@ -34,7 +36,7 @@ const HomePage = () => {
         </div>
         <div
           style={{
-            backgroundColor: "rgba(100, 100, 100, 0.1)",
+            backgroundColor: "rgba(100, 100, 100, 0.2)",
             backgroundPosition: "center",
             borderRadius: "1.5rem",
             marginLeft: "12rem",
@@ -48,6 +50,7 @@ const HomePage = () => {
         </div>
         <Today />
         <Hourly />
+        <ForeCast />
         {/* <Radar /> */}
         <AirQuality />
       </PageContainer>
