@@ -4,6 +4,7 @@ import {
   BasicCityWeatherContextType,
 } from "../context-providers/BasicCityWeatherContext";
 import { fahrenheitToCelsius, formatTime } from "../utils/consts";
+import WeatherIcons from "../utils/WeatherIcons";
 
 const Hourly = () => {
   const { lastSuccessfulSearch } = useContext(
@@ -16,10 +17,11 @@ const Hourly = () => {
       return;
     }
 
-    const apiKey = "9CHYZKME2JKSMQAH86EQMBB5Z";
     const location = lastSuccessfulSearch;
 
-    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${apiKey}`;
+    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${
+      import.meta.env.VITE_HOURLY_APPID
+    }`;
 
     fetch(apiUrl)
       .then((response) => response.json())
@@ -37,7 +39,7 @@ const Hourly = () => {
   };
 
   return (
-    <div id="hourly">
+    <div id="hourly" style={{ paddingTop: "6rem" }}>
       <div
         style={{
           alignItems: "center",
@@ -47,36 +49,42 @@ const Hourly = () => {
           fontSize: "1.5rem",
           fontWeight: "bold",
           fontFamily: "monospace",
-          marginTop: "3vh",
         }}
       >
-        NEXT 8 HOURS FORECAST
+        NEXT 6 HOURS FORECAST
       </div>
       {forecastData && forecastData.days[0].hours ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "0.5rem",
+          }}
+        >
           {forecastData.days[0].hours
-            .slice(getCurrentHour(), getCurrentHour() + 8)
+            .slice(getCurrentHour(), getCurrentHour() + 6)
             .map((hour: any, index: any) => (
               <div
                 key={index}
                 style={{
-                  width: "100px",
-                  height: "100px",
+                  height: "auto",
                   backgroundImage: `url("https://tionimpo.sirv.com/Images/weatherwizbanner.png")`,
                   backgroundPosition: "left",
-                  margin: "5px",
-                  padding: "10px",
+                  margin: "0.5rem",
+                  padding: "1rem",
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
                   fontFamily: "monospace",
                   borderRadius: "1.5rem",
-                  marginTop: "3vh",
                 }}
               >
                 <div>
                   <p>{formatTime(hour.datetime)}</p>
+                </div>
+                <div>
+                  <WeatherIcons weather={{ id: hour.icon, icon: "clearday" }} />
                 </div>
                 <div>
                   <p>{fahrenheitToCelsius(hour.temp)}°C</p>

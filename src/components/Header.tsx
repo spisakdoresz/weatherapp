@@ -20,8 +20,9 @@ const StyledBox = styled("div")({
   justifyContent: "space-between",
   alignItems: "center",
   width: "100%",
-  maxWidth: "1200px",
-  padding: "0 200px",
+  left: "12rem",
+  right: "12rem",
+  padding: "0rem 12rem",
 });
 
 const Header = () => {
@@ -34,16 +35,25 @@ const Header = () => {
     navigate(path);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <React.Fragment>
-      <HeaderContainer>
+      <HeaderContainer
+        style={{ position: "fixed", top: 0, width: "100%", zIndex: 100 }}
+      >
         <StyledBox>
           <div>
             <img
               src={homeImage}
               alt="Home"
-              style={{ width: "200px", cursor: "pointer" }}
-              onClick={() => handleNavigation("/")}
+              style={{ width: "13rem", cursor: "pointer" }}
+              onClick={() => {
+                handleNavigation("/");
+                scrollToTop();
+              }}
             />
           </div>
           <div

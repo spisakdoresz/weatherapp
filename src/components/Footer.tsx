@@ -3,7 +3,7 @@ const Footer = () => {
     <div
       style={{
         backgroundColor: "#FEC7A2",
-        height: "200px",
+        height: "12.5rem",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

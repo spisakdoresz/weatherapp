@@ -11,13 +11,13 @@ import {
 } from "../utils/consts";
 
 const WeatherDataContainer = styled("div")({
-  padding: "25px",
+  padding: "1.563rem",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   textAlign: "center",
   "& > *:not(:last-of-type)": {
-    borderBottom: "1px solid #ccc",
+    borderBottom: "0.063rem solid #ccc",
     marginBottom: "0.2rem",
     paddingBottom: "0.2rem",
     borderColor: "white",
@@ -28,7 +28,7 @@ const WeatherDataContainer = styled("div")({
 const StyledDataItem = styled("div")({
   fontSize: "1.2rem",
   fontWeight: "bold",
-  margin: "0.1rem 0",
+  margin: "0.1rem 0rem",
 });
 
 const StyledText = styled("div")({
@@ -45,7 +45,7 @@ const Today = () => {
   }
 
   return (
-    <div id="today">
+    <div id="today" style={{ paddingTop: "6rem" }}>
       <div
         style={{
           alignItems: "center",
@@ -55,14 +55,13 @@ const Today = () => {
           fontSize: "1.5rem",
           fontWeight: "bold",
           fontFamily: "monospace",
-          marginTop: "3vh",
         }}
       >
         TODAY'S WEATHER IN {weatherData.name}
       </div>
       <div
         style={{
-          marginTop: "3vh",
+          marginTop: "0.5rem",
           backgroundImage:
             "url(https://tionimpo.sirv.com/Images/weatherwizbanner.png)",
           backgroundColor: "rgba(128, 128, 128, 0.3)",

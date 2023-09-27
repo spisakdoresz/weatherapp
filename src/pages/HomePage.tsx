@@ -27,7 +27,8 @@ const HomePage = () => {
             fontSize: "1.5rem",
             fontWeight: "bold",
             fontFamily: "monospace",
-            marginTop: "3vh",
+            marginTop: "1rem",
+            paddingTop: "6rem",
           }}
         >
           CURRENT WEATHER
@@ -39,7 +40,7 @@ const HomePage = () => {
             borderRadius: "1.5rem",
             marginLeft: "12rem",
             marginRight: "12rem",
-            marginTop: "1rem",
+            marginTop: "0.5rem",
             padding: "1rem",
           }}
           aria-label=""
@@ -49,7 +50,6 @@ const HomePage = () => {
         <Today />
         <Hourly />
         <ForeCast />
-        {/* <Radar /> */}
         <AirQuality />
       </PageContainer>
     </>

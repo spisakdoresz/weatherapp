@@ -8,7 +8,7 @@ const StyledBox = styled("div")({
   justifyContent: "center",
   alignItems: "center",
   height: "2.5rem",
-  border: "0.5px solid #F9AB94",
+  border: "0.05rem solid #F9AB94",
 });
 
 const StyledHashLink = styled(HashLink)({
@@ -21,7 +21,9 @@ const StyledHashLink = styled(HashLink)({
 export default function NavBar() {
   return (
     <React.Fragment>
-      <StyledBox>
+      <StyledBox
+        style={{ position: "fixed", top: "3.6rem", width: "100%", zIndex: 99 }}
+      >
         <div
           style={{
             position: "absolute",
@@ -38,10 +40,6 @@ export default function NavBar() {
           <StyledHashLink to="#hourly" smooth>
             HOURLY
           </StyledHashLink>
-          {/* <StyledHashLink to="#radar" smooth>
-            RADAR
-          </StyledHashLink>
-           */}
           <StyledHashLink to="#forecast" smooth>
             FORECAST
           </StyledHashLink>

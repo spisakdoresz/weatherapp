@@ -30,15 +30,15 @@ const WeatherSummary = ({ weatherData }: WeatherSummaryProps) => {
                   alignItems: "flex-start",
                   backgroundImage: `url("https://tionimpo.sirv.com/Images/weatherwizbanner.png")`,
                   backgroundPosition: "left",
-                  padding: "25px",
-                  borderRadius: "20px",
-                  marginLeft: "55px",
+                  padding: "1.563rem",
+                  borderRadius: "1.25rem",
+                  marginLeft: "3.438rem",
                 }}
               >
-                <div style={{ fontSize: "60px", fontWeight: "bold" }}>
+                <div style={{ fontSize: "3.75rem", fontWeight: "bold" }}>
                   {Math.round(weatherData.main.temp - 273.15)}°C
                 </div>
-                <div style={{ fontSize: "25px" }}>
+                <div style={{ fontSize: "1.563rem" }}>
                   Real feel: {Math.round(weatherData.main.feels_like - 273.15)}
                   °C
                 </div>
@@ -50,20 +50,14 @@ const WeatherSummary = ({ weatherData }: WeatherSummaryProps) => {
                   flexDirection: "column",
                   alignItems: "center",
                   justifyContent: "center",
-                  fontSize: "20px",
+                  fontSize: "1.25rem",
                   fontWeight: "bold",
                 }}
               >
                 {weatherData &&
                   weatherData.weather &&
                   weatherData.weather.length > 0 && (
-                    <div
-                      style={
-                        {
-                          // alignItems: "left",
-                        }
-                      }
-                    >
+                    <div>
                       {weatherData && (
                         <WeatherIcons weather={weatherData.weather[0]} />
                       )}
@@ -86,16 +80,16 @@ const WeatherSummary = ({ weatherData }: WeatherSummaryProps) => {
                     alignItems: "flex-start",
                     backgroundImage: `url("https://tionimpo.sirv.com/Images/weatherwizbanner.png")`,
                     backgroundPosition: "left",
-                    padding: "25px",
-                    borderRadius: "20px",
-                    marginRight: "55px",
+                    padding: "1.563rem",
+                    borderRadius: "1.25rem",
+                    marginRight: "3.438rem",
                   }}
                 >
                   <div style={{ fontSize: "24px" }}>
                     Cloudiness: {weatherData.clouds.all}%
                   </div>
-                  <div style={{ margin: "20px 0" }} />
-                  <div style={{ fontSize: "24px" }}>
+                  <div style={{ margin: "1.25rem 0rem" }} />
+                  <div style={{ fontSize: "1.5rem" }}>
                     Wind Speed: {weatherData.wind.speed} m/s
                   </div>
                 </div>

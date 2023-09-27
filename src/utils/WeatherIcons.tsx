@@ -8,17 +8,18 @@ interface WeatherIconProps {
 }
 
 const iconStyles = {
-  width: "100px",
-  height: "100px",
+  width: "6.25rem",
+  height: "6.25rem",
 };
 
 const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
   const isDaytime = weather.icon.includes("d");
-
+  //Weather icons are associated with two types of API calls.
+  //The links to the codes work from the OpenWeather API call (for Today component),
+  //while strings use the documentation from the Virtualcrossing website API call (for ForeCast & Hourly component).
   const weatherIcons: { [key: number | string]: string } = {
+    //Codes for Today component:
     200: "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
-    "thunder-showers-day":
-      "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
     201: "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
     202: "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
     210: "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
@@ -37,15 +38,12 @@ const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
     313: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     314: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     321: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
-    "showers-day":
-      "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     500: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     501: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     502: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     503: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     504: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     511: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
-    rain: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
     520: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     521: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
     522: "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
@@ -60,7 +58,6 @@ const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
     616: "https://tionimpo.sirv.com/Images/weatherapp/snowDay.png",
     620: "https://tionimpo.sirv.com/Images/weatherapp/snowDay.png",
     621: "https://tionimpo.sirv.com/Images/weatherapp/snowDay.png",
-    snow: "https://tionimpo.sirv.com/Images/weatherapp/snowDay.png",
     622: "https://tionimpo.sirv.com/Images/weatherapp/snowDay.png",
     701: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
     711: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
@@ -72,19 +69,12 @@ const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
     762: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
     771: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
     781: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
-    fog: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
     800: isDaytime
       ? "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png"
       : "https://tionimpo.sirv.com/Images/weatherapp/clearNight.png",
-    "clear-day": "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png",
-    "clear-night": "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png",
     801: isDaytime
       ? "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsDay.png"
       : "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsNight.png",
-    "partly-cloudy-day":
-      "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsDay.png",
-    "partly-cloudy-night":
-      "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsDay.png",
     802: isDaytime
       ? "https://tionimpo.sirv.com/Images/weatherapp/scatteredCloudsDay.png"
       : "https://tionimpo.sirv.com/Images/weatherapp/scatteredCloudsNight.png",
@@ -94,6 +84,33 @@ const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
     804: isDaytime
       ? "https://tionimpo.sirv.com/Images/weatherapp/brokenCloudsDay.png"
       : "https://tionimpo.sirv.com/Images/weatherapp/brokenCloudsNight.png",
+    //Strings for ForeCast and Hourly components:
+    "thunder-showers-day":
+      "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
+    "thunder-rain":
+      "https://tionimpo.sirv.com/Images/weatherapp/thunderstormDay.png",
+    "thunder-showers-night":
+      "https://tionimpo.sirv.com/Images/weatherapp/thunderstormNight.png",
+    "showers-day":
+      "https://tionimpo.sirv.com/Images/weatherapp/showerRainDay.png",
+    "showers-night":
+      "https://tionimpo.sirv.com/Images/weatherapp/showerRainNight.png",
+    rain: "https://tionimpo.sirv.com/Images/weatherapp/rainDay.png",
+    snow: "https://tionimpo.sirv.com/Images/weatherapp/snowDay.png",
+    "snow-showers-day":
+      "https://tionimpo.sirv.com/Images/weatherapp/snowDay.png",
+    "snow-showers-night":
+      "https://tionimpo.sirv.com/Images/weatherapp/snowNight.png",
+    wind: "https://tionimpo.sirv.com/Images/weatherapp/wind-14.png",
+    "clear-day": "https://tionimpo.sirv.com/Images/weatherapp/clearDay.png",
+    "clear-night": "https://tionimpo.sirv.com/Images/weatherapp/clearNight.png",
+    "partly-cloudy-day":
+      "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsDay.png",
+    "partly-cloudy-night":
+      "https://tionimpo.sirv.com/Images/weatherapp/fewCloudsNight.png",
+    cloudy:
+      "https://tionimpo.sirv.com/Images/weatherapp/scatteredCloudsDay.png",
+    fog: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
   };
 
   const iconPath = weatherIcons[weather.id] || null;

@@ -36,8 +36,8 @@ const SearchBar = () => {
         display: "inline-flex",
         alignItems: "center",
         background: isClicked ? "rgba(249, 171, 148, 0.3)" : "transparent",
-        borderRadius: "25px",
-        padding: "10px",
+        borderRadius: "1.563rem",
+        padding: "0.625rem",
         transition: "background 0.3s",
       }}
     >
@@ -48,10 +48,10 @@ const SearchBar = () => {
         onKeyDown={handleKeyDown}
         placeholder="Search for cities"
         style={{
-          padding: "10px",
-          borderRadius: "25px",
-          border: "1px solid #ccc",
-          marginRight: "10px",
+          padding: "0.625rem",
+          borderRadius: "1.563rem",
+          border: "0.063rem solid #ccc",
+          marginRight: "0.625rem",
         }}
       />
       <SearchIcon
@@ -62,7 +62,7 @@ const SearchBar = () => {
         }}
       />
       {lastSuccessfulSearch && !weatherData && (
-        <div style={{ marginTop: "10px" }}>
+        <div style={{ marginTop: "625rem" }}>
           Last successful search: {lastSuccessfulSearch}
         </div>
       )}
