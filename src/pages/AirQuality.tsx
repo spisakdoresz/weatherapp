@@ -23,17 +23,6 @@ const StyledTableTypography = styled("div")({
   margin: "0.1rem 0",
 });
 
-const StyledTableHeadTypography = styled("div")({
-  justifyContent: "center",
-  display: "flex",
-  fontFamily: "monospace",
-  fontSize: "0.8rem",
-  color: "black",
-  fontWeight: "bold",
-  margin: "0.1rem 0",
-  width: "auto",
-});
-
 const StyledAirQualityContainer = styled("div")({
   padding: "1.563rem",
   display: "flex",
@@ -193,7 +182,6 @@ const AirQuality = () => {
                     </TableCell>
                   </TableRow>
                 </TableHead>
-
                 <TableHead>
                   <TableRow>
                     <TableCell>

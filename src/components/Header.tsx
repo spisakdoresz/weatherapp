@@ -65,16 +65,12 @@ const Header = () => {
               fontWeight: "bold",
             }}
           >
-            {loading ? (
-              "Find your city"
-            ) : weatherData && weatherData.main ? (
+            {!loading && weatherData && (
               <>
                 {weatherData.name} |{" "}
                 {Math.round(weatherData.main.temp - 273.15)}
                 °C
               </>
-            ) : (
-              "No available weather data."
             )}
           </div>
           <div>

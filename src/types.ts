@@ -88,5 +88,10 @@ export interface ForeCastWeather {
     tempmin: number;
     description: string;
     icon: string;
+    hours: {
+      datetime: string;
+      icon: string;
+      temp: number;
+    }[];
   }[];
 }

@@ -16,43 +16,41 @@ const HomePage = () => {
   ) as BasicCityWeatherContextType;
 
   return (
-    <>
-      <PageContainer>
-        <div
-          style={{
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "center",
-            color: "black",
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-            fontFamily: "monospace",
-            marginTop: "1rem",
-            paddingTop: "6rem",
-          }}
-        >
-          CURRENT WEATHER
-        </div>
-        <div
-          style={{
-            backgroundColor: "rgba(100, 100, 100, 0.2)",
-            backgroundPosition: "center",
-            borderRadius: "1.5rem",
-            marginLeft: "12rem",
-            marginRight: "12rem",
-            marginTop: "0.5rem",
-            padding: "1rem",
-          }}
-          aria-label=""
-        >
-          <WeatherSummary weatherData={weatherData} />
-        </div>
-        <Today />
-        <Hourly />
-        <ForeCast />
-        <AirQuality />
-      </PageContainer>
-    </>
+    <PageContainer>
+      <div
+        style={{
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
+          color: "black",
+          fontSize: "1.5rem",
+          fontWeight: "bold",
+          fontFamily: "monospace",
+          marginTop: "1rem",
+          paddingTop: "6rem",
+        }}
+      >
+        CURRENT WEATHER
+      </div>
+      <div
+        style={{
+          backgroundColor: "rgba(100, 100, 100, 0.2)",
+          backgroundPosition: "center",
+          borderRadius: "1.5rem",
+          marginLeft: "12rem",
+          marginRight: "12rem",
+          marginTop: "0.5rem",
+          padding: "1rem",
+        }}
+        aria-label=""
+      >
+        <WeatherSummary weatherData={weatherData} />
+      </div>
+      <Today />
+      <Hourly />
+      <ForeCast />
+      <AirQuality />
+    </PageContainer>
   );
 };
 

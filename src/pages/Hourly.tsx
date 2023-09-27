@@ -5,21 +5,18 @@ import {
 } from "../context-providers/BasicCityWeatherContext";
 import { fahrenheitToCelsius, formatTime } from "../utils/consts";
 import WeatherIcons from "../utils/WeatherIcons";
+import { ForeCastWeather } from "../types";
 
 const Hourly = () => {
   const { lastSuccessfulSearch } = useContext(
     BasicCityWeatherContext
   ) as BasicCityWeatherContextType;
-  const [forecastData, setForecastData] = useState<any | null>(null);
+  const [forecastData, setForecastData] = useState<ForeCastWeather | null>(
+    null
+  );
 
   useEffect(() => {
-    if (!lastSuccessfulSearch) {
-      return;
-    }
-
-    const location = lastSuccessfulSearch;
-
-    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${
+    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lastSuccessfulSearch}?key=${
       import.meta.env.VITE_HOURLY_APPID
     }`;
 
@@ -32,11 +29,6 @@ const Hourly = () => {
         console.error("Error fetching forecast data:", error);
       });
   }, [lastSuccessfulSearch]);
-
-  const getCurrentHour = () => {
-    const currentDateTime = new Date();
-    return currentDateTime.getHours();
-  };
 
   return (
     <div id="hourly" style={{ paddingTop: "6rem" }}>
@@ -53,7 +45,7 @@ const Hourly = () => {
       >
         NEXT 6 HOURS FORECAST
       </div>
-      {forecastData && forecastData.days[0].hours ? (
+      {forecastData && (
         <div
           style={{
             display: "flex",
@@ -62,10 +54,10 @@ const Hourly = () => {
           }}
         >
           {forecastData.days[0].hours
-            .slice(getCurrentHour(), getCurrentHour() + 6)
-            .map((hour: any, index: any) => (
+            .slice(new Date().getHours(), new Date().getHours() + 6)
+            .map((hour) => (
               <div
-                key={index}
+                key={hour.datetime}
                 style={{
                   height: "auto",
                   backgroundImage: `url("https://tionimpo.sirv.com/Images/weatherwizbanner.png")`,
@@ -92,8 +84,6 @@ const Hourly = () => {
               </div>
             ))}
         </div>
-      ) : (
-        <p>Loading forecast data...</p>
       )}
     </div>
   );

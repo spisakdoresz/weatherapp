@@ -12,28 +12,22 @@ export type BasicCityWeatherContextType = {
 const BasicCityWeatherContext =
   createContext<BasicCityWeatherContextType | null>(null);
 
+const DEFAULT_CITY = "Budapest";
+
 // @ts-ignore
 const BasicCityWeatherContextProvider = ({ children }) => {
-  const [searchText, setSearchText] = useState<string>("Budapest");
+  const [searchText, setSearchText] = useState<string>(DEFAULT_CITY);
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [lastSuccessfulSearch, setLastSuccessfulSearch] = useState<string>("");
+  const [lastSuccessfulSearch, setLastSuccessfulSearch] =
+    useState<string>(DEFAULT_CITY);
 
   const updateSearchText = (newText: string) => {
     setSearchText(newText);
   };
 
   useEffect(() => {
-    if (searchText === "") {
-      if (lastSuccessfulSearch && !weatherData) {
-        return;
-      } else {
-        setWeatherData(null);
-        return;
-      }
-    }
-
     setLoading(true);
     fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${searchText}&appid=${
@@ -44,16 +38,13 @@ const BasicCityWeatherContextProvider = ({ children }) => {
       .then((resultJson: WeatherData) => {
         if (resultJson.cod === 200) {
           setWeatherData(resultJson);
-          setLoading(false);
           setLastSuccessfulSearch(searchText);
-        } else {
-          setLoading(false);
         }
+        setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err.message);
         setLoading(false);
-        setWeatherData(null);
       });
   }, [searchText, lastSuccessfulSearch]);
 

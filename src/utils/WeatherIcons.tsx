@@ -2,7 +2,7 @@ import React from "react";
 
 interface WeatherIconProps {
   weather: {
-    id: number;
+    id: number | string;
     icon: string;
   };
 }
@@ -113,7 +113,7 @@ const WeatherIcons: React.FC<WeatherIconProps> = ({ weather }) => {
     fog: "https://tionimpo.sirv.com/Images/weatherapp/mistDay.png",
   };
 
-  const iconPath = weatherIcons[weather.id] || null;
+  const iconPath = weatherIcons[weather.id];
 
   return (
     <div>

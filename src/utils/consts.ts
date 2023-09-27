@@ -23,9 +23,8 @@ export const getWindDirectionText = (windDegrees: number): string => {
     return "West";
   } else if (windDegrees >= 292.5 && windDegrees < 337.5) {
     return "Northwest";
-  } else {
-    return "";
   }
+  return "";
 };
 
 export const fahrenheitToCelsius = (fahrenheit: number): number => {

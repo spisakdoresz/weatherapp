@@ -6,20 +6,18 @@ import {
 import { fahrenheitToCelsius, formatDate } from "../utils/consts";
 import WeatherIcons from "../utils/WeatherIcons";
 import Tooltip from "@material-ui/core/Tooltip";
+import { ForeCastWeather } from "../types";
 
 const ForeCast = () => {
   const { lastSuccessfulSearch } = useContext(
     BasicCityWeatherContext
   ) as BasicCityWeatherContextType;
-  const [forecastData, setForecastData] = useState(null);
+  const [forecastData, setForecastData] = useState<ForeCastWeather | null>(
+    null
+  );
 
   useEffect(() => {
-    if (!lastSuccessfulSearch) {
-      return;
-    }
-
-    const location = lastSuccessfulSearch;
-    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&key=${
+    const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lastSuccessfulSearch}?unitGroup=us&key=${
       import.meta.env.VITE_HOURLY_APPID
     }`;
 
@@ -56,7 +54,7 @@ const ForeCast = () => {
             marginTop: "0.5rem",
           }}
         >
-          {forecastData.days?.slice(0, 15).map((day) => (
+          {forecastData.days.slice(0, 15).map((day) => (
             <div
               key={day.datetime}
               style={{

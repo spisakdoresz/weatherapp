@@ -13,7 +13,9 @@ const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [isClicked, setIsClicked] = useState<boolean>(false);
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handlePressEnterInSearchBar = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (event.key === "Enter") {
       handleSearch();
     }
@@ -45,7 +47,7 @@ const SearchBar = () => {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        onKeyDown={handleKeyDown}
+        onKeyDown={handlePressEnterInSearchBar}
         placeholder="Search for cities"
         style={{
           padding: "0.625rem",
@@ -61,11 +63,6 @@ const SearchBar = () => {
           cursor: "pointer",
         }}
       />
-      {lastSuccessfulSearch && !weatherData && (
-        <div style={{ marginTop: "625rem" }}>
-          Last successful search: {lastSuccessfulSearch}
-        </div>
-      )}
     </div>
   );
 };
