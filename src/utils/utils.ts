@@ -37,8 +37,11 @@ export const formatTime = (datetime: string): string => {
 };
 
 export function formatDate(dateString: string): string {
-  const options = { weekday: "short", day: "numeric" };
   const date = new Date(dateString);
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "short",
+    day: "numeric",
+  };
   return date.toLocaleDateString("hu-HU", options);
 }
 

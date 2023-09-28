@@ -6,7 +6,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
-  const { updateSearchText, weatherData, lastSuccessfulSearch } = useContext(
+  const { updateSearchText } = useContext(
     BasicCityWeatherContext
   ) as BasicCityWeatherContextType;
 

@@ -1,5 +1,4 @@
 import { styled } from "@mui/material";
-import React from "react";
 import { HashLink } from "react-router-hash-link";
 
 const StyledBox = styled("div")({
