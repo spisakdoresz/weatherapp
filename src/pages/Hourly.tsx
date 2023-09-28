@@ -3,7 +3,7 @@ import {
   BasicCityWeatherContext,
   BasicCityWeatherContextType,
 } from "../context-providers/BasicCityWeatherContext";
-import { fahrenheitToCelsius, formatTime } from "../utils/consts";
+import { fahrenheitToCelsius, formatTime } from "../utils/utils";
 import WeatherIcons from "../utils/WeatherIcons";
 import { ForeCastWeather } from "../types";
 

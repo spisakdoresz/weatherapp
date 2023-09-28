@@ -31,16 +31,8 @@ const Header = () => {
     BasicCityWeatherContext
   ) as BasicCityWeatherContextType;
 
-  const handleNavigation = (path: string) => {
-    navigate(path);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
-    <React.Fragment>
+    <>
       <HeaderContainer
         style={{ position: "fixed", top: 0, width: "100%", zIndex: 100 }}
       >
@@ -51,8 +43,8 @@ const Header = () => {
               alt="Home"
               style={{ width: "13rem", cursor: "pointer" }}
               onClick={() => {
-                handleNavigation("/");
-                scrollToTop();
+                navigate("/");
+                window.scrollTo({ top: 0, behavior: "smooth" });
               }}
             />
           </div>
@@ -78,7 +70,7 @@ const Header = () => {
           </div>
         </StyledBox>
       </HeaderContainer>
-    </React.Fragment>
+    </>
   );
 };
 

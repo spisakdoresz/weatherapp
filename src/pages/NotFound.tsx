@@ -1,12 +1,14 @@
 import { styled } from "@mui/material";
 
 const StyledNotFoundContainer = styled("div")({
-  backgroundColor: "#BB8995",
+  backgroundColor: "#FEC7A2",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   fontFamily: "monospace",
+  position: "relative",
+  minHeight: "100vh",
 });
 
 const NotFound = () => {

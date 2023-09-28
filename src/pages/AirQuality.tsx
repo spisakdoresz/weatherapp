@@ -10,7 +10,7 @@ import {
   getO3Evaluation,
   getPm10Evaluation,
   getPm2_5Evaluation,
-} from "../utils/util";
+} from "../utils/utils";
 import { Table, TableHead } from "@material-ui/core";
 
 const StyledTableTypography = styled("div")({
@@ -41,7 +41,6 @@ const StyledAirQualityContainer = styled("div")({
 });
 
 const AirQuality = () => {
-  const API_KEY = "05a66915c31c9dbdc378a7a876e14c3c";
   const { lastSuccessfulSearch } = useContext(
     BasicCityWeatherContext
   ) as BasicCityWeatherContextType;
@@ -51,12 +50,16 @@ const AirQuality = () => {
   useEffect(() => {
     if (lastSuccessfulSearch) {
       fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${lastSuccessfulSearch}&appid=${API_KEY}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${lastSuccessfulSearch}&appid=${
+          import.meta.env.VITE_APPID
+        }`
       )
         .then((response) => response.json())
         .then((resultJson) => {
           const { coord } = resultJson;
-          const apiUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=${API_KEY}`;
+          const apiUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${
+            coord.lat
+          }&lon=${coord.lon}&appid=${import.meta.env.VITE_APPID}`;
 
           fetch(apiUrl)
             .then((response) => response.json())

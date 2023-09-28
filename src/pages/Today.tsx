@@ -8,7 +8,7 @@ import {
   getWindDirectionText,
   kelvinToCelsius,
   unixTimestampToLocaleTimeString,
-} from "../utils/consts";
+} from "../utils/utils";
 
 const WeatherDataContainer = styled("div")({
   padding: "1.563rem",
@@ -79,7 +79,7 @@ const Today = () => {
                 Max temp: {kelvinToCelsius(weatherData.main.temp_max || 0)}°C
               </StyledDataItem>
               <StyledDataItem>
-                Humidity: {weatherData.main.humidity} %
+                Humidity: {weatherData.main.humidity}%
               </StyledDataItem>
               <StyledDataItem>
                 Pressure: {weatherData.main.pressure} hPa
@@ -91,7 +91,7 @@ const Today = () => {
                 Wind Direction: {getWindDirectionText(weatherData.wind.deg)}
               </StyledDataItem>
               <StyledDataItem>
-                Cloudiness: {weatherData.clouds.all} %
+                Cloudiness: {weatherData.clouds.all}%
               </StyledDataItem>
               <StyledDataItem>
                 Sunrise:{" "}

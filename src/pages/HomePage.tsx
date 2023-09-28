@@ -4,7 +4,6 @@ import {
   BasicCityWeatherContextType,
 } from "../context-providers/BasicCityWeatherContext";
 import WeatherSummary from "../components/WeatherSummary";
-import PageContainer from "../components/PageContainer";
 import Today from "./Today";
 import AirQuality from "./AirQuality";
 import Hourly from "./Hourly";
@@ -16,7 +15,12 @@ const HomePage = () => {
   ) as BasicCityWeatherContextType;
 
   return (
-    <PageContainer>
+    <div
+      style={{
+        backgroundImage: "linear-gradient(to bottom, #ffffff, #FEC7A2)",
+        width: "100%",
+      }}
+    >
       <div
         style={{
           alignItems: "center",
@@ -32,25 +36,12 @@ const HomePage = () => {
       >
         CURRENT WEATHER
       </div>
-      <div
-        style={{
-          backgroundColor: "rgba(100, 100, 100, 0.2)",
-          backgroundPosition: "center",
-          borderRadius: "1.5rem",
-          marginLeft: "12rem",
-          marginRight: "12rem",
-          marginTop: "0.5rem",
-          padding: "1rem",
-        }}
-        aria-label=""
-      >
-        <WeatherSummary weatherData={weatherData} />
-      </div>
+      <WeatherSummary weatherData={weatherData} />
       <Today />
       <Hourly />
       <ForeCast />
       <AirQuality />
-    </PageContainer>
+    </div>
   );
 };
 

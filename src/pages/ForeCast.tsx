@@ -3,7 +3,7 @@ import {
   BasicCityWeatherContext,
   BasicCityWeatherContextType,
 } from "../context-providers/BasicCityWeatherContext";
-import { fahrenheitToCelsius, formatDate } from "../utils/consts";
+import { fahrenheitToCelsius, formatDate } from "../utils/utils";
 import WeatherIcons from "../utils/WeatherIcons";
 import Tooltip from "@material-ui/core/Tooltip";
 import { ForeCastWeather } from "../types";

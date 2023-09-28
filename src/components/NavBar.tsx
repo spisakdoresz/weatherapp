@@ -20,7 +20,7 @@ const StyledHashLink = styled(HashLink)({
 
 export default function NavBar() {
   return (
-    <React.Fragment>
+    <>
       <StyledBox
         style={{ position: "fixed", top: "3.6rem", width: "100%", zIndex: 99 }}
       >
@@ -48,6 +48,6 @@ export default function NavBar() {
           </StyledHashLink>
         </div>
       </StyledBox>
-    </React.Fragment>
+    </>
   );
 }
